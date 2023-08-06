@@ -26,7 +26,7 @@ def add_handler(data):  # handler function
     phone = data[1]
     i = 0                 # in case if contact is already exist we add him a number for example Kristain , Kristian 1 , Kristian 2
     while True:
-        new_name = name if i == 0 else f"{name} ({i})"
+        new_name = name if i == 0 else f"{name}({i})"
         if new_name not in ADDRESSBOOK:
             ADDRESSBOOK[new_name] = phone
             return f"Contact {new_name} with phone {phone} was saved"

@@ -9,6 +9,7 @@ COMMANDS_LIST = ["'How to add a contact?'  - To add a new contact enter one of t
 "'How to close program?' - enter one of this commands 'good bye', 'close', 'exit' or you can use Ctrl C'.",
 "'How can I check list of commands again?' - enter 'help'. 🙂"]
 
+
 def input_error(wrap):   #working in case of errors
     def inner(*args):
         nonlocal wrap
@@ -17,7 +18,6 @@ def input_error(wrap):   #working in case of errors
         except (IndexError, KeyError, ValueError, TypeError):
             return "Give me the correct command please"
     return inner
-
 
 
 @input_error
@@ -32,6 +32,7 @@ def add_handler(data):  # handler function
             ADDRESSBOOK[new_name] = phone
             return f"Contact {new_name} with phone {phone} was saved"
         i += 1
+
 
 @input_error
 def change_handler(data):    #changing phone number function
@@ -88,6 +89,7 @@ COMMANDS = {
     show_handler: ["show all"],
     help_handler: ["help"],
 }
+
 
 @input_error
 def main(): #question-answer loop

@@ -24,8 +24,13 @@ def input_error(wrap):   #working in case of errors
 def add_handler(data):  # handler function
     name = data[0].title()
     phone = data[1]
-    ADDRESSBOOK[name] = phone
-    return f"Contact {name} with phone {phone} was saved"
+    i = 0                 # in case if contact is already exist we add him a number for example Kristain , Kristian 1 , Kristian 2
+    while True:
+        new_name = name if i == 0 else f"{name} ({i})"
+        if new_name not in ADDRESSBOOK:
+            ADDRESSBOOK[new_name] = phone
+            return f"Contact {new_name} with phone {phone} was saved"
+        i += 1
 
 
 @input_error

@@ -32,20 +32,31 @@ def add_handler(data):  # handler function
 def change_handler(data):    #changing phone number function
     name = data[0].title()
     new_phone = data[1]
-    ADDRESSBOOK[name] = new_phone
-    return f"Contact {name} with new phone number - {new_phone} was saved"
+    if name in ADDRESSBOOK:
+        ADDRESSBOOK[name] = new_phone
+        return f"Contact {name} with new phone number - {new_phone} was saved"
+    else:
+        return f'Sorry, but {name} was not found in the address book.'
+
 
 
 @input_error
 def phone_shower_handler(data): #showing phone number function
     name = data[0].title()
-    phone_to_show = ADDRESSBOOK.get(name)
-    return f"Here is number of {name} and his phone number is - {phone_to_show}"
+    if name in ADDRESSBOOK:
+        phone_to_show = ADDRESSBOOK.get(name)
+        return f"Here is number of {name} and his phone number is - {phone_to_show}"
+    else:
+        return f"Contact {name} was not found"
+
 
 
 @input_error
-def show_handler(*args):            #show all contacts function
-    return f"Here is your phone list {ADDRESSBOOK}"
+def show_handler(*args):
+    if ADDRESSBOOK:                  #show all contacts function
+        return f"Here is your phone list {ADDRESSBOOK}"
+    else:
+        return "there is no contacts in you contacts list"
 
 
 @input_error
